@@ -1,6 +1,7 @@
 
 .header{
     grid-area: h ;
+    background: url("https://www.appmachine.com/wp-content/uploads/2016/02/No-Branding-Header-Background-1.jpg");
     background-color: red;
     margin-left: 5px;
     border-radius: 5px;

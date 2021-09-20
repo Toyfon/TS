@@ -18,9 +18,7 @@ const MyPosts = () => {
                 <div>
                     <textarea></textarea>
                 </div>
-                <div>
-                    <button>Add post</button>
-                </div>
+                    <input className={s.btn} type="submit" value="Add"></input>
             </div>
         </div>
         <div className={s.posts}>

@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
 
 .nav {
     padding: 30px;
     text-align: center;
-    background-color: lightpink;
+    background-color: #00ced1 ;
     grid-area: n;
     margin: 5px 5px 0px 5px;
     border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -18,3 +21,12 @@
     color: rgba(244,255,56,0.89);
 }
 
+
+.settings  {
+    margin-top: 250px;
+
+}
+
+.item {
+    margin-bottom: 5px;
+}
