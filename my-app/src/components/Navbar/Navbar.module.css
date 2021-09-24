@@ -2,19 +2,25 @@
 
 
 .nav {
+    grid-area: n;
     padding: 30px;
     text-align: center;
     background-color: #00ced1 ;
-    grid-area: n;
     margin: 5px 5px 0px 5px;
-    border-radius: 5px;
     font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+
 }
 
+.item {
+    margin-bottom: 5px;
+
+}
 
 .item a {
     color: white;
     text-decoration: none;
+    text-shadow: 1px 1px 2px #f5f5f5;
 }
 
 .item a.activeLink {
@@ -23,10 +29,29 @@
 
 
 .settings  {
-    margin-top: 250px;
-
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 100px;
+    text-align: center;
+    margin-right: 30px;
 }
 
-.item {
-    margin-bottom: 5px;
+.settings a {
+    padding-right: 15px;
+    padding-top: 23px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #f5f5f5;
+}
+.settings a.activeLink {
+    color: rgba(244,255,56,0.89);
+}
+
+
+.settings img {
+    width: 19px;
+    margin-right: 0px;
+    margin-top: 22px;
+    padding-left: 15px;
+    padding-right: 5px;
 }

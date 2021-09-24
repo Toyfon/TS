@@ -6,6 +6,5 @@ import s from './Settings.module.css'
     <div>
       Settings
     </div>
-
   )
 }
