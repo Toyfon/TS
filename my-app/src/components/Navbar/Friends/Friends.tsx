@@ -1,11 +1,13 @@
 import s from './Friends.module.css'
-// @ts-ignore
 import {Friend} from "./Friend/Friend";
+import {FriendsBarType} from "../../../Redux/State";
+import React from "react";
 
 
- export const Friends = (props:any) => {
 
-     let friendElement = props.friends.map((f: { name: string;}) => <Friend name={f.name}  />)
+ export const Friends: React.FC<FriendsBarType> = (props) => {
+
+     let friendElement = props.friends.map((f) => <Friend name={f.name} avatar={f.avatar}  />)
 
     return (
         <div>

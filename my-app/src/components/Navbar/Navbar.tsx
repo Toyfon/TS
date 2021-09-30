@@ -1,10 +1,12 @@
 import s from './Navbar.module.css';
-// @ts-ignore
 import {NavLink} from "react-router-dom";
-import {Friends} from "./Friends/Friends";
+import React from "react";
+
+
 
 
 const Navbar = (props:any) => {
+
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -20,8 +22,9 @@ const Navbar = (props:any) => {
                 <NavLink to="/music" activeClassName={s.activeLink}>Music</NavLink>
             </div>
             <div className={s.item}>
-                <Friends friends={props.state.friends}/>
+                <NavLink to="/friends" activeClassName={s.activeLink}>Friends</NavLink>
             </div>
+
 
             <div className={s.settings}>
                 <img src="https://img.icons8.com/offices/30/000000/settings.png"/>

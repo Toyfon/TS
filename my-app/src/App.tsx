@@ -1,34 +1,40 @@
 import './App.css';
-
+import {Route} from "react-router-dom";
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import {Dialogs} from "./components/Dialogs/Dialogs";
-// @ts-ignore
-import {BrowserRouter, Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
-import {Friends} from "./components/Navbar/Friends/Friends"
 import {Settings} from "./components/Settings/Settings";
+import React from "react";
+import {RootStateType} from "./Redux/State";
+import {Friends} from "./components/Navbar/Friends/Friends";
 
 
-const App = (props:any) => {
+type AppType = {
+    state: RootStateType
+}
+
+const App: React.FC<AppType> = (props) => {
     return (
-        <BrowserRouter>
+
         <div className='app-wrapper'>
             <Header/>
-            <Navbar state ={props.state.siteBar}/>
+            <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path ='/dialogs' render={ () => <Dialogs
-                    state={props.state.dialogsPage}/>} />
+                    dialogs={props.state.dialogsPage.dialogs} messages= {props.state.dialogsPage.messages}/>} />
                 <Route path = '/profile' render={ () => <Profile
-                    state={props.state.profilePage} />} />
+                    profilePage={props.state.profilePage} addPost={props.state.addPost}  />} />
                 <Route path = '/news' render={ () => <News/>} />
                 <Route path = '/music' render={ () => <Music/>} />
                 <Route path = '/settings' render={ () => <Settings/>} />
+                <Route path = '/friends' render={ () => <Friends friends={props.state.friendsBar.friends}/>} />
+
             </div>
         </div>
-        </BrowserRouter>
+
     )
 }
 
