@@ -16,8 +16,6 @@ const MyPosts:React.FC<MyPostsPropsType> = (props) => {
 
 
 
-
-
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
