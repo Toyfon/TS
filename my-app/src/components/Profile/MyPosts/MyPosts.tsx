@@ -19,7 +19,7 @@ const MyPosts:React.FC<MyPostsPropsType> = (props) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
-        let postMessage = newPostElement.current?.value
+        let postMessage = newPostElement.current?.value;
         props.addPost(postMessage!)
     }
 

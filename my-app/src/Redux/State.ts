@@ -1,4 +1,5 @@
 import {stringify} from "querystring";
+import {rerenderEntireTree} from "../render";
 
 export type FriendType = {
     id: number
@@ -109,6 +110,7 @@ export let state = {
             likesCount: 0
         };
         state.profilePage.posts.push(newPost)
+        rerenderEntireTree(state)
     }
 }
 
