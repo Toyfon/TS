@@ -26,7 +26,10 @@ const App: React.FC<AppType> = (props) => {
                 <Route path ='/dialogs' render={ () => <Dialogs
                     dialogs={props.state.dialogsPage.dialogs} messages= {props.state.dialogsPage.messages}/>} />
                 <Route path = '/profile' render={ () => <Profile
-                    profilePage={props.state.profilePage} addPost={props.state.addPost}  />} />
+                    profilePage={props.state.profilePage}
+                    addPost={props.state.addPost}
+                    updateNewPostText ={props.state.updateNewPostText}
+                    newPostText={props.state.profilePage.newPostText}/>} />
                 <Route path = '/news' render={ () => <News/>} />
                 <Route path = '/music' render={ () => <Music/>} />
                 <Route path = '/settings' render={ () => <Settings/>} />

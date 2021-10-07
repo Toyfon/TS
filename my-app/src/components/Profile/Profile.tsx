@@ -7,6 +7,8 @@ import React from "react";
 type ProfilePropsType ={
     profilePage: ProfilePageType
     addPost: (postMessage: string) => void
+    newPostText: string
+    updateNewPostText: (newText: string) => void
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -15,7 +17,10 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
 
         <div className={s.profile}>
             <ProfileInfo/>
-            <MyPosts posts={props.profilePage.posts} addPost={props.addPost}/>
+            <MyPosts posts={props.profilePage.posts}
+                     newPostText = {props.profilePage.newPostText}
+                     updateNewPostText = {props.updateNewPostText}
+                     addPost={props.addPost}/>
         </div>
     )
 }
