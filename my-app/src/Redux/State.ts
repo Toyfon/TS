@@ -1,5 +1,13 @@
-import {stringify} from "querystring";
-import {rerenderEntireTree} from "../render";
+
+let onChange = () => {
+    console.log("State Changed")
+}
+
+export const subscribe = (callback: () => void) => {
+    onChange = callback
+}
+
+
 
 export type FriendType = {
     id: number
@@ -115,12 +123,12 @@ export let state = {
         };
         state.profilePage.posts.push(newPost)
         state.profilePage.newPostText = ''
-        rerenderEntireTree(state)
+        onChange()
     },
 
     updateNewPostText(newText:string) {
         state.profilePage.newPostText = newText;
-        rerenderEntireTree(state);
+        onChange();
     }
 
 }
