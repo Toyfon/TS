@@ -8,15 +8,18 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
 import React from "react";
-import {RootStateType} from "./Redux/State";
+import  {StoreType} from "./Redux/State";
 import {Friends} from "./components/Navbar/Friends/Friends";
 
 
 type AppType = {
-    state: RootStateType
+    store: StoreType
 }
 
 const App: React.FC<AppType> = (props) => {
+
+
+
     return (
 
         <div className='app-wrapper'>
@@ -24,16 +27,16 @@ const App: React.FC<AppType> = (props) => {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path ='/dialogs' render={ () => <Dialogs
-                    dialogs={props.state.dialogsPage.dialogs} messages= {props.state.dialogsPage.messages}/>} />
+                    dialogs={props.store.state.dialogsPage.dialogs} messages= {props.store.state.dialogsPage.messages}/>} />
                 <Route path = '/profile' render={ () => <Profile
-                    profilePage={props.state.profilePage}
-                    addPost={props.state.addPost}
-                    updateNewPostText ={props.state.updateNewPostText}
-                    newPostText={props.state.profilePage.newPostText}/>} />
+                    profilePage={props.store.state.profilePage}
+                    addPost={props.store.addPost}
+                    updateNewPostText ={props.store.updateNewPostText}
+                    newPostText={props.store.state.profilePage.newPostText}/>} />
                 <Route path = '/news' render={ () => <News/>} />
                 <Route path = '/music' render={ () => <Music/>} />
                 <Route path = '/settings' render={ () => <Settings/>} />
-                <Route path = '/friends' render={ () => <Friends friends={props.state.friendsBar.friends}/>} />
+                <Route path = '/friends' render={ () => <Friends friends={props.store.state.friendsBar.friends}/>} />
 
             </div>
         </div>

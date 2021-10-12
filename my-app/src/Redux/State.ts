@@ -1,13 +1,4 @@
 
-let onChange = () => {
-    console.log("State Changed")
-}
-
-export const subscribe = (callback: () => void) => {
-    onChange = callback
-}
-
-
 
 export type FriendType = {
     id: number
@@ -49,89 +40,113 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     friendsBar: FriendsBarType
-    addPost: (postMessage: string) => void
-    updateNewPostText: (newText: string) => void
 }
 
 
-export let state = {
-    profilePage: {
-        posts: [
-            {id: 1, message: 'HI! My name is Vova', likesCount: 11},
-            {id: 2, message: 'I\'m waiting for you', likesCount: 12},
-            {id: 3, message: 'Good luck and have fun!', likesCount: 35},
-            {id: 4, message: 'Hey you!', likesCount: 24}
-        ],
-        newPostText: ' '
-    },
-    dialogsPage: {
-        dialogs: [
-            {id: 1, name: 'Vova'},
-            {id: 2, name: 'Tolya'},
-            {id: 3, name: 'Petya'},
-            {id: 4, name: 'Kostya'},
-            {id: 5, name: 'Valya'},
-            {id: 6, name: 'Sveta'},
-            {id: 7, name: 'Tanya'}
+export type StoreType = {
+    state: RootStateType
+    addPost: (postMessage: string) => void
+    updateNewPostText: (newText: string) => void
+    onChange: () => void
+    subscribe: (callback: () => void) => void
+    getState: () => RootStateType
+}
 
-        ],
-        messages: [
-            {id: 1, message: 'HI'},
-            {id: 2, message: 'Yo'},
-            {id: 3, message: 'Ho.w are you'},
-            {id: 4, message: 'Yo'},
-            {id: 5, message: 'Yo'},
-            {id: 6, message: 'Yo'},
-            {id: 7, message: 'Здарова'},
-        ]
+export let store = {
+
+    state: {
+        profilePage: {
+            posts: [
+                {id: 1, message: 'HI! My name is Vova', likesCount: 11},
+                {id: 2, message: 'I\'m waiting for you', likesCount: 12},
+                {id: 3, message: 'Good luck and have fun!', likesCount: 35},
+                {id: 4, message: 'Hey you!', likesCount: 24}
+            ],
+            newPostText: ' '
+        },
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: 'Vova'},
+                {id: 2, name: 'Tolya'},
+                {id: 3, name: 'Petya'},
+                {id: 4, name: 'Kostya'},
+                {id: 5, name: 'Valya'},
+                {id: 6, name: 'Sveta'},
+                {id: 7, name: 'Tanya'}
+
+            ],
+            messages: [
+                {id: 1, message: 'HI'},
+                {id: 2, message: 'Yo'},
+                {id: 3, message: 'Ho.w are you'},
+                {id: 4, message: 'Yo'},
+                {id: 5, message: 'Yo'},
+                {id: 6, message: 'Yo'},
+                {id: 7, message: 'Здарова'},
+            ]
+        },
+        friendsBar: {
+            friends: [
+                {
+                    id: 1,
+                    name: 'Tolya',
+                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                },
+                {
+                    id: 2,
+                    name: 'Yura',
+                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                },
+                {
+                    id: 3,
+                    name: 'Leha',
+                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                },
+                {
+                    id: 4,
+                    name: 'Ruslan',
+                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                },
+                {
+                    id: 5,
+                    name: 'Kostya',
+                    avatar: 'https://www.vokrug.tv/pic/person/2/b/f/4/2bf448098b7badf3b37e87c510da29bc.jpeg'
+                },
+            ]
+        },
     },
-    friendsBar: {
-        friends: [
-            {
-                id: 1,
-                name: 'Tolya',
-                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
-            },
-            {
-                id: 2,
-                name: 'Yura',
-                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
-            },
-            {
-                id: 3,
-                name: 'Leha',
-                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
-            },
-            {
-                id: 4,
-                name: 'Ruslan',
-                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
-            },
-            {
-                id: 5,
-                name: 'Kostya',
-                avatar: 'https://www.vokrug.tv/pic/person/2/b/f/4/2bf448098b7badf3b37e87c510da29bc.jpeg'
-            },
-        ]
-    },
+
 
     addPost() {
         let newPost = {
             id: 5,
-            message: state.profilePage.newPostText,
+            message: store.state.profilePage.newPostText,
             likesCount: 0
         };
-        state.profilePage.posts.push(newPost)
-        state.profilePage.newPostText = ''
-        onChange()
+        store.state.profilePage.posts.push(newPost)
+        store.state.profilePage.newPostText = ''
+        store.onChange()
     },
 
-    updateNewPostText(newText:string) {
-        state.profilePage.newPostText = newText;
-        onChange();
+    updateNewPostText(newText: string) {
+        store.state.profilePage.newPostText = newText;
+        store.onChange();
+    },
+
+    onChange() {
+        console.log("State Changed")
+    },
+
+    subscribe(callback: () => void) {
+        store.onChange = callback
+    },
+
+    getState() {
+        return store.state
     }
+
 
 }
 
 
-export default state
+export default store
