@@ -6,7 +6,7 @@ const ProfileInfo = () => {
         <div>
             <div>
                 <img
-                    src='https://img5.goodfon.ru/wallpaper/nbig/6/c2/osen-nebo-listia-colorful-iaponiia-japan-red-klen-gora-fud-2.jpg'></img>
+                    src='https://source.unsplash.com/1600x900/?nature,water' alt='image'/>
             </div>
             <div className={s.descriptionBlock}>
                 ava + desсription

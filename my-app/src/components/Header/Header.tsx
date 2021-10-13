@@ -1,8 +1,6 @@
 import s from './Header.module.css';
 
-type Headertype = {
 
-}
 
 const Header = () => {
     return <header className={s.header}>

@@ -90,27 +90,27 @@ export let store = {
                 {
                     id: 1,
                     name: 'Tolya',
-                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                    avatar: 'https://source.unsplash.com/weekly?user'
                 },
                 {
                     id: 2,
                     name: 'Yura',
-                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                    avatar: 'https://source.unsplash.com/user/erondu/daily'
                 },
                 {
                     id: 3,
                     name: 'Leha',
-                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                    avatar: 'https://source.unsplash.com/weekly?man'
                 },
                 {
                     id: 4,
                     name: 'Ruslan',
-                    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxoVYK9gVqDWkfv3blKuxWEO0t9JrH6XSjxg&usqp=CAU'
+                    avatar: 'https://source.unsplash.com/weekly?man'
                 },
                 {
                     id: 5,
                     name: 'Kostya',
-                    avatar: 'https://www.vokrug.tv/pic/person/2/b/f/4/2bf448098b7badf3b37e87c510da29bc.jpeg'
+                    avatar: 'https://source.unsplash.com/weekly?man'
                 },
             ]
         },
