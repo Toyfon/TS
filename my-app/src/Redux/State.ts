@@ -1,9 +1,12 @@
+import profileReducer from "./profilePage-reducer";
+import dialogsReducer from "./dialogsPage-reducer";
+import friendsBarReducer from "./friendsBar-reducer";
+
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT ='UPDATE-NEW-POST-TEXT'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-const UPDATE_NEW_MESSAGE_BODY ='UPDATE_NEW_MESSAGE_BODY'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 const SEND_MESSAGE = 'SEND_MESSAGE'
-
 
 
 export type FriendType = {
@@ -55,21 +58,18 @@ export type StoreType = {
     onChange: () => void
     subscribe: (callback: () => void) => void
     getState: () => RootStateType
-    dispatch: (action: ActionsType  ) => void
+    dispatch: (action: ActionsType) => void
 }
 
 
+export type ActionsType = ReturnType<typeof addPostCreator> | ReturnType<typeof updateNewPostTextCreator>
+    | ReturnType<typeof updateNewMassageBodyCreator> | ReturnType<typeof sendMessageCreator>
 
 
-export type ActionsType = ReturnType <typeof addPostCreator> | ReturnType <typeof updateNewPostTextCreator>
-    | ReturnType <typeof updateNewMassageBodyCreator> | ReturnType <typeof sendMessageCreator >
-
-
-
-export let addPostCreator = (newPostText: string) => ({type:ADD_POST} as const)
-export let updateNewPostTextCreator = (text:string) => ({type:UPDATE_NEW_POST_TEXT, newText: text} as const)
-export let updateNewMassageBodyCreator = (body:string) => ({type:UPDATE_NEW_MESSAGE_BODY, body: body} as const )
-export let sendMessageCreator = () => ({type:SEND_MESSAGE} as const)
+export let addPostCreator = (newPostText: string) => ({type: ADD_POST} as const)
+export let updateNewPostTextCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text} as const)
+export let updateNewMassageBodyCreator = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body} as const)
+export let sendMessageCreator = () => ({type: SEND_MESSAGE} as const)
 
 export let store: StoreType = {
 
@@ -137,31 +137,14 @@ export let store: StoreType = {
     },
 
 
-    dispatch (action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: store.state.profilePage.newPostText,
-                likesCount: 0
-            };
-            store.state.profilePage.posts.push(newPost)
-            store.state.profilePage.newPostText = ''
-            store.onChange()
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-                store.state.profilePage.newPostText = action.newText;
-                store.onChange();
-            } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            store.state.dialogsPage.newMessageBody = action.body;
-            store.onChange();
-        } else if (action.type === SEND_MESSAGE) {
-            let body = store.state.dialogsPage.newMessageBody;
-            store.state.dialogsPage.newMessageBody = ''
-            store.state.dialogsPage.messages.push({id: 8, message: body},)
-            store.onChange();
-            }
+    dispatch(action) {
 
-        },
+        store.state.profilePage = profileReducer(store.state.profilePage, action)
+        store.state.dialogsPage = dialogsReducer(store.state.dialogsPage, action)
+        store.state.friendsBar = friendsBarReducer(store.state.friendsBar, action)
 
+        store.onChange();
+    },
 
 
     onChange() {
