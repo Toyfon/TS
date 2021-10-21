@@ -1,3 +1,9 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT ='UPDATE-NEW-POST-TEXT'
+
+const UPDATE_NEW_MESSAGE_BODY ='UPDATE_NEW_MESSAGE_BODY'
+const SEND_MESSAGE = 'SEND_MESSAGE'
+
 
 
 export type FriendType = {
@@ -30,6 +36,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
+    newMessageBody: string
 }
 
 export type FriendsBarType = {
@@ -54,22 +61,15 @@ export type StoreType = {
 
 
 
-export type ActionsType = ReturnType <typeof addPostActionCreator> | ReturnType <typeof updateNewPostTextActionCreator>
+export type ActionsType = ReturnType <typeof addPostCreator> | ReturnType <typeof updateNewPostTextCreator>
+    | ReturnType <typeof updateNewMassageBodyCreator> | ReturnType <typeof sendMessageCreator >
 
 
 
-export let addPostActionCreator = (newPostText: string) => {
-    return {
-        type:"ADD-POST",
-    } as const
-}
-
-export let updateNewPostTextActionCreator = (text:string) => {
-    return {
-        type:'UPDATE-NEW-POST-TEXT',
-        newText:text
-    } as const
-}
+export let addPostCreator = (newPostText: string) => ({type:ADD_POST} as const)
+export let updateNewPostTextCreator = (text:string) => ({type:UPDATE_NEW_POST_TEXT, newText: text} as const)
+export let updateNewMassageBodyCreator = (body:string) => ({type:UPDATE_NEW_MESSAGE_BODY, body: body} as const )
+export let sendMessageCreator = () => ({type:SEND_MESSAGE} as const)
 
 export let store: StoreType = {
 
@@ -102,7 +102,8 @@ export let store: StoreType = {
                 {id: 5, message: 'Yo'},
                 {id: 6, message: 'Yo'},
                 {id: 7, message: 'Здарова'},
-            ]
+            ],
+            newMessageBody: " "
         },
         friendsBar: {
             friends: [
@@ -137,7 +138,7 @@ export let store: StoreType = {
 
 
     dispatch (action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 message: store.state.profilePage.newPostText,
@@ -146,12 +147,22 @@ export let store: StoreType = {
             store.state.profilePage.posts.push(newPost)
             store.state.profilePage.newPostText = ''
             store.onChange()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
                 store.state.profilePage.newPostText = action.newText;
                 store.onChange();
+            } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            store.state.dialogsPage.newMessageBody = action.body;
+            store.onChange();
+        } else if (action.type === SEND_MESSAGE) {
+            let body = store.state.dialogsPage.newMessageBody;
+            store.state.dialogsPage.newMessageBody = ''
+            store.state.dialogsPage.messages.push({id: 8, message: body},)
+            store.onChange();
             }
 
-    },
+        },
+
+
 
     onChange() {
         console.log("State Changed")

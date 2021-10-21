@@ -27,7 +27,11 @@ const App: React.FC<AppType> = (props) => {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path ='/dialogs' render={ () => <Dialogs
-                    dialogs={props.store.state.dialogsPage.dialogs} messages= {props.store.state.dialogsPage.messages}/>} />
+                    dialogsPage={props.store.state.dialogsPage}
+                    dispatch={props.store.dispatch.bind(props.store)}
+                   /* dialogs={props.store.state.dialogsPage.dialogs}
+                    messages= {props.store.state.dialogsPage.messages}*/
+                    />} />
                 <Route path = '/profile' render={ () => <Profile
                     profilePage={props.store.state.profilePage}
                     dispatch={props.store.dispatch.bind(props.store)}/>} />
