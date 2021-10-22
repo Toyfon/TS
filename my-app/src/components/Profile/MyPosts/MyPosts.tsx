@@ -1,7 +1,8 @@
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import React from "react";
-import {ActionsType, addPostCreator, PostsType, updateNewPostTextCreator} from "../../../Redux/State";
+import {ActionsType ,PostsType, } from "../../../Redux/State";
+import {addPostCreator, updateNewPostTextCreator} from "../../../Redux/profilePage-reducer";
 
 
 
@@ -24,7 +25,7 @@ const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     let addPost = () => {
-        props.dispatch (addPostCreator(props.newPostText))
+        props.dispatch (addPostCreator())
     }
 
     let onPostChange = () => {

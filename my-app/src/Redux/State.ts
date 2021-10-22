@@ -1,12 +1,6 @@
-import profileReducer from "./profilePage-reducer";
-import dialogsReducer from "./dialogsPage-reducer";
+import profileReducer, {addPostCreator, updateNewPostTextCreator} from "./profilePage-reducer";
+import dialogsReducer, {sendMessageCreator, updateNewMassageBodyCreator} from "./dialogsPage-reducer";
 import friendsBarReducer from "./friendsBar-reducer";
-
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
-const SEND_MESSAGE = 'SEND_MESSAGE'
 
 
 export type FriendType = {
@@ -14,38 +8,31 @@ export type FriendType = {
     name: string
     avatar: string
 }
-
 export type DialogsType = {
     id: number
     name: string
 }
-
 export type MessagesType = {
     id: number
     message: string
 }
-
 export type PostsType = {
     id: number
     message: string
     likesCount: number
 }
-
 export type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
-
 export type DialogsPageType = {
     dialogs: Array<DialogsType>
     messages: Array<MessagesType>
     newMessageBody: string
 }
-
 export type FriendsBarType = {
     friends: Array<FriendType>
 }
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
@@ -65,11 +52,6 @@ export type StoreType = {
 export type ActionsType = ReturnType<typeof addPostCreator> | ReturnType<typeof updateNewPostTextCreator>
     | ReturnType<typeof updateNewMassageBodyCreator> | ReturnType<typeof sendMessageCreator>
 
-
-export let addPostCreator = (newPostText: string) => ({type: ADD_POST} as const)
-export let updateNewPostTextCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text} as const)
-export let updateNewMassageBodyCreator = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body} as const)
-export let sendMessageCreator = () => ({type: SEND_MESSAGE} as const)
 
 export let store: StoreType = {
 
@@ -138,7 +120,6 @@ export let store: StoreType = {
 
 
     dispatch(action) {
-
         store.state.profilePage = profileReducer(store.state.profilePage, action)
         store.state.dialogsPage = dialogsReducer(store.state.dialogsPage, action)
         store.state.friendsBar = friendsBarReducer(store.state.friendsBar, action)
